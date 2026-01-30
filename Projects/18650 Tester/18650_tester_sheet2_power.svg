@@ -1,0 +1,376 @@
+<svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .wire { stroke: #2d3748; stroke-width: 2; fill: none; }
+      .wire-5v { stroke: #e53e3e; stroke-width: 2.5; fill: none; }
+      .wire-batt { stroke: #dd6b20; stroke-width: 2.5; fill: none; }
+      .wire-gnd { stroke: #1a365d; stroke-width: 2; fill: none; }
+      .wire-signal { stroke: #805ad5; stroke-width: 2; fill: none; }
+      .component-fill { stroke: #2d3748; stroke-width: 2; fill: #f7fafc; }
+      .ic-fill { fill: #2d3748; stroke: none; }
+      .text-label { font-family: 'Consolas', monospace; font-size: 12px; fill: #2d3748; }
+      .text-value { font-family: 'Consolas', monospace; font-size: 10px; fill: #718096; }
+      .text-title { font-family: 'Consolas', monospace; font-size: 20px; fill: #1a202c; font-weight: bold; }
+      .text-page { font-family: 'Consolas', monospace; font-size: 14px; fill: #718096; }
+      .text-pin { font-family: 'Consolas', monospace; font-size: 10px; fill: #718096; }
+      .text-net { font-family: 'Consolas', monospace; font-size: 11px; fill: #2b6cb0; font-weight: bold; }
+      .text-comp { font-family: 'Consolas', monospace; font-size: 11px; fill: #2d3748; }
+      .text-section { font-family: 'Consolas', monospace; font-size: 13px; fill: #4a5568; font-weight: bold; }
+      .node { fill: #2d3748; }
+      .node-5v { fill: #e53e3e; }
+      .node-batt { fill: #dd6b20; }
+      .ground-symbol { stroke: #1a365d; stroke-width: 2; fill: none; }
+      .net-label { fill: #ebf8ff; stroke: #3182ce; stroke-width: 1.5; }
+      .net-label-out { fill: #faf5ff; stroke: #805ad5; stroke-width: 1.5; }
+      .net-label-in { fill: #f0fff4; stroke: #38a169; stroke-width: 1.5; }
+      .net-label-pwr { fill: #fff5f5; stroke: #e53e3e; stroke-width: 1.5; }
+      .section-box { fill: none; stroke: #e2e8f0; stroke-width: 1; stroke-dasharray: 6,4; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="700" fill="#fafafa"/>
+  
+  <!-- Title block -->
+  <text x="500" y="35" class="text-title" text-anchor="middle">18650 CAPACITY TESTER</text>
+  <text x="500" y="55" class="text-page" text-anchor="middle">Sheet 2 of 2: Power &amp; Analog Circuits</text>
+  
+  <!-- Section labels -->
+  <rect x="30" y="80" width="280" height="280" class="section-box" rx="8"/>
+  <text x="45" y="100" class="text-section">CHARGER</text>
+  
+  <rect x="330" y="80" width="280" height="400" class="section-box" rx="8"/>
+  <text x="345" y="100" class="text-section">CHARGE SWITCH</text>
+  
+  <rect x="630" y="80" width="160" height="280" class="section-box" rx="8"/>
+  <text x="645" y="100" class="text-section">VOLTAGE SENSE</text>
+  
+  <rect x="810" y="80" width="160" height="380" class="section-box" rx="8"/>
+  <text x="825" y="100" class="text-section">DISCHARGE</text>
+  
+  <!-- ==================== CHARGER SECTION ==================== -->
+  
+  <!-- +5V net label input -->
+  <rect x="50" y="120" width="50" height="26" class="net-label-pwr" rx="3"/>
+  <text x="75" y="138" class="text-net" text-anchor="middle">+5V</text>
+  
+  <line x1="100" y1="133" x2="130" y2="133" class="wire-5v"/>
+  <line x1="130" y1="133" x2="130" y2="175" class="wire-5v"/>
+  
+  <!-- TP4056 Module -->
+  <rect x="70" y="175" width="140" height="110" class="component-fill" rx="5"/>
+  <rect x="78" y="183" width="124" height="94" class="ic-fill" rx="4"/>
+  <text x="140" y="220" fill="white" font-family="Consolas" font-size="14" text-anchor="middle">TP4056</text>
+  <text x="140" y="240" fill="white" font-family="Consolas" font-size="11" text-anchor="middle">1A Charger</text>
+  <text x="140" y="260" fill="#a0aec0" font-family="Consolas" font-size="9" text-anchor="middle">+ Protection</text>
+  
+  <!-- TP4056 pin labels -->
+  <text x="62" y="198" class="text-pin" text-anchor="end">IN+</text>
+  <text x="62" y="230" class="text-pin" text-anchor="end">IN-</text>
+  <text x="218" y="198" class="text-pin">B+</text>
+  <text x="218" y="230" class="text-pin">B-</text>
+  <text x="218" y="270" class="text-pin">CHRG</text>
+  
+  <!-- IN+ connection -->
+  <line x1="70" y1="195" x2="50" y2="195" class="wire-5v"/>
+  <line x1="50" y1="195" x2="50" y2="133" class="wire-5v"/>
+  <line x1="50" y1="133" x2="100" y2="133" class="wire-5v"/>
+  <circle cx="50" cy="133" r="3" class="node-5v"/>
+  
+  <!-- IN- to GND -->
+  <line x1="70" y1="227" x2="50" y2="227" class="wire-gnd"/>
+  <line x1="50" y1="227" x2="50" y2="255" class="wire-gnd"/>
+  <line x1="40" y1="255" x2="60" y2="255" class="ground-symbol"/>
+  <line x1="43" y1="261" x2="57" y2="261" class="ground-symbol"/>
+  <line x1="46" y1="267" x2="54" y2="267" class="ground-symbol"/>
+  
+  <!-- CHRG output to net label -->
+  <line x1="210" y1="267" x2="250" y2="267" class="wire-signal"/>
+  <rect x="250" y="254" width="90" height="26" class="net-label-out" rx="3"/>
+  <text x="295" y="272" class="text-net" text-anchor="middle">CHRG_STAT</text>
+  
+  <!-- B+ output -->
+  <line x1="210" y1="195" x2="260" y2="195" class="wire-batt"/>
+  <circle cx="260" cy="195" r="4" class="node-batt"/>
+  
+  <!-- B- output -->
+  <line x1="210" y1="227" x2="240" y2="227" class="wire-gnd"/>
+  <line x1="240" y1="227" x2="240" y2="320" class="wire-gnd"/>
+  
+  <!-- ==================== CHARGE SWITCH SECTION ==================== -->
+  
+  <!-- CHARGE net label input -->
+  <rect x="350" y="425" width="75" height="26" class="net-label-in" rx="3"/>
+  <text x="387" y="443" class="text-net" text-anchor="middle">CHARGE</text>
+  
+  <!-- R6: 1k from CHARGE signal to Q3 base -->
+  <line x1="425" y1="438" x2="450" y2="438" class="wire-signal"/>
+  <rect x="450" y="428" width="50" height="20" class="component-fill" rx="2"/>
+  <text x="475" y="442" class="text-comp" text-anchor="middle">1k</text>
+  <text x="475" y="460" class="text-value" text-anchor="middle">R6</text>
+  <line x1="500" y1="438" x2="520" y2="438" class="wire-signal"/>
+  
+  <!-- ========== Q3: 2N2222 NPN Transistor ========== -->
+  
+  <!-- Base connection -->
+  <line x1="520" y1="438" x2="535" y2="438" class="wire"/>
+  
+  <!-- Base vertical bar -->
+  <line x1="535" y1="418" x2="535" y2="458" stroke="#2d3748" stroke-width="3"/>
+  
+  <!-- Collector -->
+  <line x1="545" y1="423" x2="545" y2="433" stroke="#2d3748" stroke-width="2"/>
+  <line x1="545" y1="428" x2="555" y2="405" class="wire"/>
+  <text x="562" y="410" class="text-pin">C</text>
+  
+  <!-- Emitter with arrow -->
+  <line x1="545" y1="443" x2="545" y2="453" stroke="#2d3748" stroke-width="2"/>
+  <line x1="545" y1="448" x2="555" y2="470" class="wire"/>
+  <polygon points="552,463 555,470 558,463" fill="#2d3748"/>
+  <text x="562" y="475" class="text-pin">E</text>
+  
+  <!-- Q3 label -->
+  <text x="575" y="438" class="text-comp">Q3</text>
+  <text x="575" y="452" class="text-value">2N2222</text>
+  
+  <!-- Emitter to GND -->
+  <line x1="555" y1="470" x2="555" y2="495" class="wire-gnd"/>
+  <line x1="545" y1="495" x2="565" y2="495" class="ground-symbol"/>
+  <line x1="548" y1="501" x2="562" y2="501" class="ground-symbol"/>
+  <line x1="551" y1="507" x2="559" y2="507" class="ground-symbol"/>
+  
+  <!-- R5: 1k from Q3 collector to Q1 gate -->
+  <line x1="555" y1="405" x2="555" y2="380" class="wire"/>
+  <rect x="545" y="340" width="20" height="40" class="component-fill" rx="2"/>
+  <text x="555" y="365" class="text-comp" text-anchor="middle" font-size="10">1k</text>
+  <text x="575" y="362" class="text-value">R5</text>
+  <line x1="555" y1="340" x2="555" y2="310" class="wire"/>
+  
+  <!-- Gate node -->
+  <circle cx="555" cy="310" r="3" class="node"/>
+  
+  <!-- R4: 10k pull-up from gate to source -->
+  <line x1="555" y1="310" x2="555" y2="280" class="wire"/>
+  <rect x="545" y="230" width="20" height="50" class="component-fill" rx="2"/>
+  <text x="555" y="260" class="text-comp" text-anchor="middle" font-size="10">10k</text>
+  <text x="575" y="255" class="text-value">R4</text>
+  <line x1="555" y1="230" x2="555" y2="195" class="wire"/>
+  <line x1="555" y1="195" x2="480" y2="195" class="wire"/>
+  
+  <!-- ========== Q1: IRF9540 P-Channel MOSFET ========== -->
+  
+  <!-- Source from TP4056 B+ -->
+  <line x1="260" y1="195" x2="430" y2="195" class="wire-batt"/>
+  <line x1="430" y1="195" x2="430" y2="250" class="wire-batt"/>
+  <text x="438" y="248" class="text-pin">S</text>
+  
+  <!-- Connect source to R4 pull-up -->
+  <line x1="430" y1="195" x2="480" y2="195" class="wire-batt"/>
+  <circle cx="480" cy="195" r="3" class="node-batt"/>
+  
+  <!-- Channel bar -->
+  <line x1="445" y1="255" x2="445" y2="325" stroke="#2d3748" stroke-width="4"/>
+  
+  <!-- Channel segments -->
+  <line x1="455" y1="262" x2="455" y2="278" stroke="#2d3748" stroke-width="2"/>
+  <line x1="455" y1="285" x2="455" y2="301" stroke="#2d3748" stroke-width="2"/>
+  <line x1="455" y1="307" x2="455" y2="320" stroke="#2d3748" stroke-width="2"/>
+  
+  <!-- Source internal -->
+  <line x1="455" y1="270" x2="475" y2="270" class="wire"/>
+  <line x1="475" y1="250" x2="475" y2="270" class="wire"/>
+  <line x1="430" y1="250" x2="475" y2="250" class="wire"/>
+  
+  <!-- Drain internal -->
+  <line x1="455" y1="313" x2="475" y2="313" class="wire"/>
+  <line x1="475" y1="313" x2="475" y2="350" class="wire"/>
+  
+  <!-- Body diode (arrow INTO for P-ch) -->
+  <line x1="455" y1="292" x2="475" y2="292" class="wire"/>
+  <polygon points="465,287 470,292 465,297" fill="#2d3748"/>
+  
+  <!-- Drain -->
+  <text x="482" y="340" class="text-pin">D</text>
+  
+  <!-- Gate connection -->
+  <line x1="555" y1="310" x2="500" y2="310" class="wire"/>
+  <line x1="500" y1="310" x2="500" y2="292" class="wire"/>
+  <line x1="500" y1="292" x2="445" y2="292" class="wire"/>
+  <text x="438" y="297" class="text-pin" text-anchor="end">G</text>
+  
+  <!-- Q1 label -->
+  <text x="415" y="295" class="text-comp" text-anchor="end">Q1</text>
+  <text x="415" y="310" class="text-value" text-anchor="end">IRF9540</text>
+  <text x="415" y="323" class="text-value" text-anchor="end">(P-ch)</text>
+  
+  <!-- ==================== BATTERY ==================== -->
+  
+  <!-- Q1 Drain to Battery B+ -->
+  <line x1="475" y1="350" x2="475" y2="380" class="wire-batt"/>
+  <circle cx="475" cy="380" r="4" class="node-batt"/>
+  <text x="460" y="375" class="text-label" text-anchor="end">BATT+</text>
+  
+  <!-- Battery symbol -->
+  <line x1="475" y1="380" x2="475" y2="400" class="wire-batt"/>
+  <line x1="455" y1="400" x2="495" y2="400" stroke="#dd6b20" stroke-width="5"/>
+  <line x1="462" y1="412" x2="488" y2="412" stroke="#2d3748" stroke-width="5"/>
+  <line x1="455" y1="424" x2="495" y2="424" stroke="#dd6b20" stroke-width="5"/>
+  <line x1="462" y1="436" x2="488" y2="436" stroke="#2d3748" stroke-width="5"/>
+  <line x1="475" y1="436" x2="475" y2="455" class="wire-gnd"/>
+  
+  <text x="505" y="418" class="text-label">18650</text>
+  <text x="505" y="433" class="text-value">3.7V</text>
+  
+  <!-- Battery B- to GND -->
+  <line x1="475" y1="455" x2="475" y2="480" class="wire-gnd"/>
+  <line x1="465" y1="480" x2="485" y2="480" class="ground-symbol"/>
+  <line x1="468" y1="486" x2="482" y2="486" class="ground-symbol"/>
+  <line x1="471" y1="492" x2="479" y2="492" class="ground-symbol"/>
+  
+  <!-- TP4056 B- connection to battery ground node -->
+  <line x1="240" y1="320" x2="240" y2="455" class="wire-gnd"/>
+  <line x1="240" y1="455" x2="475" y2="455" class="wire-gnd"/>
+  <circle cx="475" cy="455" r="3" class="node"/>
+  
+  <!-- BATT+ extends right to voltage sense and load -->
+  <line x1="475" y1="380" x2="475" y2="550" class="wire-batt"/>
+  <line x1="475" y1="550" x2="710" y2="550" class="wire-batt"/>
+  <line x1="710" y1="550" x2="710" y2="140" class="wire-batt"/>
+  <circle cx="710" cy="140" r="4" class="node-batt"/>
+  
+  <!-- ==================== VOLTAGE SENSE SECTION ==================== -->
+  
+  <!-- R1: 10k from BATT+ -->
+  <line x1="710" y1="140" x2="710" y2="165" class="wire"/>
+  <rect x="700" y="165" width="20" height="50" class="component-fill" rx="2"/>
+  <text x="710" y="195" class="text-comp" text-anchor="middle" font-size="10">10k</text>
+  <text x="730" y="190" class="text-value">R1</text>
+  
+  <!-- Midpoint -->
+  <line x1="710" y1="215" x2="710" y2="245" class="wire"/>
+  <circle cx="710" cy="245" r="4" class="node"/>
+  
+  <!-- V_SENSE output -->
+  <line x1="710" y1="245" x2="760" y2="245" class="wire-signal"/>
+  <rect x="760" y="232" width="80" height="26" class="net-label-out" rx="3"/>
+  <text x="800" y="250" class="text-net" text-anchor="middle">V_SENSE</text>
+  
+  <!-- R2: 10k to GND -->
+  <line x1="710" y1="245" x2="710" y2="275" class="wire"/>
+  <rect x="700" y="275" width="20" height="50" class="component-fill" rx="2"/>
+  <text x="710" y="305" class="text-comp" text-anchor="middle" font-size="10">10k</text>
+  <text x="730" y="300" class="text-value">R2</text>
+  
+  <!-- R2 to GND -->
+  <line x1="710" y1="325" x2="710" y2="350" class="wire-gnd"/>
+  <line x1="700" y1="350" x2="720" y2="350" class="ground-symbol"/>
+  <line x1="703" y1="356" x2="717" y2="356" class="ground-symbol"/>
+  <line x1="706" y1="362" x2="714" y2="362" class="ground-symbol"/>
+  
+  <!-- ==================== DISCHARGE SECTION ==================== -->
+  
+  <!-- BATT+ continues to load -->
+  <line x1="710" y1="140" x2="890" y2="140" class="wire-batt"/>
+  <circle cx="890" cy="140" r="4" class="node-batt"/>
+  
+  <!-- Load resistor -->
+  <line x1="890" y1="140" x2="890" y2="165" class="wire"/>
+  <rect x="865" y="165" width="50" height="70" class="component-fill" rx="3"/>
+  <text x="890" y="200" class="text-comp" text-anchor="middle">4Ω</text>
+  <text x="890" y="218" class="text-value" text-anchor="middle">10W</text>
+  <line x1="890" y1="235" x2="890" y2="265" class="wire"/>
+  
+  <!-- DISCHARGE net label input -->
+  <rect x="830" y="380" width="90" height="26" class="net-label-in" rx="3"/>
+  <text x="875" y="398" class="text-net" text-anchor="middle">DISCHARGE</text>
+  
+  <!-- R3: 100Ω gate resistor -->
+  <line x1="875" y1="380" x2="875" y2="355" class="wire-signal"/>
+  <rect x="865" y="315" width="20" height="40" class="component-fill" rx="2"/>
+  <text x="875" y="340" class="text-comp" text-anchor="middle" font-size="9">100</text>
+  <text x="895" y="337" class="text-value">R3</text>
+  <line x1="875" y1="315" x2="875" y2="295" class="wire"/>
+  
+  <!-- ========== Q2: IRLZ44N N-Channel MOSFET ========== -->
+  
+  <!-- Drain -->
+  <text x="905" y="273" class="text-pin">D</text>
+  
+  <!-- Channel bar -->
+  <line x1="880" y1="280" x2="880" y2="345" stroke="#2d3748" stroke-width="4"/>
+  
+  <!-- Channel segments -->
+  <line x1="890" y1="285" x2="890" y2="302" stroke="#2d3748" stroke-width="2"/>
+  <line x1="890" y1="308" x2="890" y2="325" stroke="#2d3748" stroke-width="2"/>
+  <line x1="890" y1="330" x2="890" y2="343" stroke="#2d3748" stroke-width="2"/>
+  
+  <!-- Drain internal -->
+  <line x1="890" y1="293" x2="910" y2="293" class="wire"/>
+  <line x1="910" y1="265" x2="910" y2="293" class="wire"/>
+  <line x1="890" y1="265" x2="910" y2="265" class="wire"/>
+  
+  <!-- Source internal -->
+  <line x1="890" y1="337" x2="910" y2="337" class="wire"/>
+  <line x1="910" y1="337" x2="910" y2="390" class="wire"/>
+  
+  <!-- Body diode (arrow OUT for N-ch) -->
+  <line x1="890" y1="315" x2="910" y2="315" class="wire"/>
+  <polygon points="900,310 905,315 900,320" fill="#2d3748"/>
+  
+  <!-- Source -->
+  <text x="918" y="360" class="text-pin">S</text>
+  
+  <!-- Gate -->
+  <line x1="875" y1="295" x2="875" y2="315" class="wire"/>
+  <line x1="875" y1="315" x2="880" y2="315" class="wire"/>
+  <text x="868" y="300" class="text-pin" text-anchor="end">G</text>
+  
+  <!-- Q2 label -->
+  <text x="890" y="425" class="text-comp" text-anchor="middle">Q2</text>
+  <text x="890" y="440" class="text-value" text-anchor="middle">IRLZ44N</text>
+  <text x="890" y="453" class="text-value" text-anchor="middle">(N-ch)</text>
+  
+  <!-- Source to GND -->
+  <line x1="910" y1="390" x2="910" y2="420" class="wire-gnd"/>
+  <line x1="900" y1="420" x2="920" y2="420" class="ground-symbol"/>
+  <line x1="903" y1="426" x2="917" y2="426" class="ground-symbol"/>
+  <line x1="906" y1="432" x2="914" y2="432" class="ground-symbol"/>
+  
+  <!-- ==================== PARTS LIST ==================== -->
+  <rect x="30" y="530" width="250" height="150" fill="#f7fafc" stroke="#cbd5e0" rx="6"/>
+  <text x="45" y="555" class="text-label" font-weight="bold">BILL OF MATERIALS:</text>
+  <text x="45" y="580" class="text-value">U1: TP4056 charger module</text>
+  <text x="45" y="598" class="text-value">Q1: IRF9540 P-ch MOSFET</text>
+  <text x="45" y="616" class="text-value">Q2: IRLZ44N N-ch MOSFET</text>
+  <text x="45" y="634" class="text-value">Q3: 2N2222 NPN transistor</text>
+  <text x="45" y="652" class="text-value">BT1: 18650 cell + holder</text>
+  <text x="45" y="670" class="text-value">R_LOAD: 4Ω 10W resistor</text>
+  
+  <rect x="300" y="530" width="200" height="150" fill="#f7fafc" stroke="#cbd5e0" rx="6"/>
+  <text x="315" y="555" class="text-label" font-weight="bold">RESISTORS:</text>
+  <text x="315" y="580" class="text-value">R1: 10kΩ  (voltage div)</text>
+  <text x="315" y="598" class="text-value">R2: 10kΩ  (voltage div)</text>
+  <text x="315" y="616" class="text-value">R3: 100Ω  (gate drive)</text>
+  <text x="315" y="634" class="text-value">R4: 10kΩ  (gate pull-up)</text>
+  <text x="315" y="652" class="text-value">R5: 1kΩ   (collector)</text>
+  <text x="315" y="670" class="text-value">R6: 1kΩ   (base drive)</text>
+  
+  <!-- ==================== OPERATION NOTES ==================== -->
+  <rect x="520" y="530" width="250" height="150" fill="#ebf8ff" stroke="#90cdf4" rx="6"/>
+  <text x="535" y="555" class="text-label" font-weight="bold">OPERATION:</text>
+  <text x="535" y="580" class="text-value">CHARGE=HIGH:</text>
+  <text x="545" y="598" class="text-value">Q3 ON → Q1 gate LOW → Q1 ON</text>
+  <text x="545" y="616" class="text-value">Charger connected to battery</text>
+  <text x="535" y="640" class="text-value">CHARGE=LOW:</text>
+  <text x="545" y="658" class="text-value">Q3 OFF → R4 pulls gate HIGH</text>
+  <text x="545" y="676" class="text-value">Q1 OFF → Charger isolated</text>
+  
+  <rect x="790" y="530" width="180" height="150" fill="#faf5ff" stroke="#d6bcfa" rx="6"/>
+  <text x="805" y="555" class="text-label" font-weight="bold">VOLTAGE DIVIDER:</text>
+  <text x="805" y="580" class="text-value">Vout = Vin × R2/(R1+R2)</text>
+  <text x="805" y="598" class="text-value">Vout = Vin / 2</text>
+  <text x="805" y="625" class="text-value">4.2V → 2.1V (full)</text>
+  <text x="805" y="643" class="text-value">3.0V → 1.5V (cutoff)</text>
+  <text x="805" y="670" class="text-value">ESP32 ADC safe range</text>
+  
+</svg>

@@ -1,0 +1,142 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .wire { stroke: #2d3748; stroke-width: 2; fill: none; }
+      .wire-5v { stroke: #e53e3e; stroke-width: 2.5; fill: none; }
+      .wire-gnd { stroke: #1a365d; stroke-width: 2; fill: none; }
+      .wire-signal { stroke: #805ad5; stroke-width: 2; fill: none; }
+      .component-fill { stroke: #2d3748; stroke-width: 2; fill: #f7fafc; }
+      .ic-fill { fill: #2d3748; stroke: none; }
+      .text-label { font-family: 'Consolas', monospace; font-size: 12px; fill: #2d3748; }
+      .text-value { font-family: 'Consolas', monospace; font-size: 10px; fill: #718096; }
+      .text-title { font-family: 'Consolas', monospace; font-size: 20px; fill: #1a202c; font-weight: bold; }
+      .text-page { font-family: 'Consolas', monospace; font-size: 14px; fill: #718096; }
+      .text-pin { font-family: 'Consolas', monospace; font-size: 10px; fill: #718096; }
+      .text-net { font-family: 'Consolas', monospace; font-size: 11px; fill: #2b6cb0; font-weight: bold; }
+      .node { fill: #2d3748; }
+      .node-5v { fill: #e53e3e; }
+      .ground-symbol { stroke: #1a365d; stroke-width: 2; fill: none; }
+      .net-label { fill: #ebf8ff; stroke: #3182ce; stroke-width: 1.5; }
+      .net-label-out { fill: #faf5ff; stroke: #805ad5; stroke-width: 1.5; }
+      .net-label-in { fill: #f0fff4; stroke: #38a169; stroke-width: 1.5; }
+      .net-label-pwr { fill: #fff5f5; stroke: #e53e3e; stroke-width: 1.5; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#fafafa"/>
+  
+  <!-- Title block -->
+  <text x="400" y="35" class="text-title" text-anchor="middle">18650 CAPACITY TESTER</text>
+  <text x="400" y="55" class="text-page" text-anchor="middle">Sheet 1 of 2: Microcontroller</text>
+  
+  <!-- ==================== USB POWER INPUT ==================== -->
+  <rect x="80" y="120" width="90" height="50" class="component-fill" rx="5"/>
+  <text x="125" y="145" class="text-label" text-anchor="middle">USB-C</text>
+  <text x="125" y="160" class="text-value" text-anchor="middle">5V Power</text>
+  
+  <!-- 5V output from USB -->
+  <line x1="170" y1="135" x2="220" y2="135" class="wire-5v"/>
+  <circle cx="220" cy="135" r="4" class="node-5v"/>
+  
+  <!-- 5V net label -->
+  <rect x="225" y="122" width="50" height="26" class="net-label-pwr" rx="3"/>
+  <text x="250" y="140" class="text-net" text-anchor="middle">+5V</text>
+  
+  <!-- GND from USB -->
+  <line x1="170" y1="155" x2="200" y2="155" class="wire-gnd"/>
+  <line x1="200" y1="155" x2="200" y2="180" class="wire-gnd"/>
+  <!-- Ground symbol -->
+  <line x1="190" y1="180" x2="210" y2="180" class="ground-symbol"/>
+  <line x1="193" y1="186" x2="207" y2="186" class="ground-symbol"/>
+  <line x1="196" y1="192" x2="204" y2="192" class="ground-symbol"/>
+  
+  <!-- ==================== HELTEC MCU ==================== -->
+  <rect x="300" y="100" width="260" height="340" class="component-fill" rx="8"/>
+  <rect x="310" y="110" width="240" height="320" class="ic-fill" rx="6"/>
+  
+  <!-- OLED display area -->
+  <rect x="355" y="130" width="150" height="60" fill="#1a202c" stroke="#4a5568" rx="4"/>
+  <text x="430" y="158" fill="#4fd1c5" font-family="Consolas" font-size="14" text-anchor="middle">Cycle 2/5</text>
+  <text x="430" y="178" fill="#718096" font-family="Consolas" font-size="11" text-anchor="middle">2841 mAh | 3.82V</text>
+  
+  <text x="430" y="220" fill="white" font-family="Consolas" font-size="16" text-anchor="middle">HELTEC</text>
+  <text x="430" y="242" fill="white" font-family="Consolas" font-size="13" text-anchor="middle">WiFi Kit 32 V3</text>
+  <text x="430" y="262" fill="#a0aec0" font-family="Consolas" font-size="11" text-anchor="middle">ESP32-S3</text>
+  
+  <!-- Pin labels - Left side -->
+  <text x="322" y="305" class="text-pin">5V</text>
+  <text x="322" y="335" class="text-pin">GND</text>
+  <text x="322" y="365" class="text-pin">GPIO6</text>
+  <text x="322" y="395" class="text-pin">GPIO7</text>
+  
+  <!-- Pin labels - Right side -->
+  <text x="515" y="305" class="text-pin">GND</text>
+  <text x="515" y="335" class="text-pin">GPIO2</text>
+  <text x="515" y="365" class="text-pin">GPIO8</text>
+  
+  <!-- Left side connection points -->
+  <circle cx="300" cy="302" r="3" class="node-5v"/>
+  <circle cx="300" cy="332" r="3" class="node"/>
+  <circle cx="300" cy="362" r="3" class="node"/>
+  <circle cx="300" cy="392" r="3" class="node"/>
+  
+  <!-- Right side connection points -->
+  <circle cx="560" cy="302" r="3" class="node"/>
+  <circle cx="560" cy="332" r="3" class="node"/>
+  <circle cx="560" cy="362" r="3" class="node"/>
+  
+  <!-- ==================== LEFT SIDE CONNECTIONS ==================== -->
+  
+  <!-- 5V input -->
+  <line x1="220" y1="135" x2="220" y2="302" class="wire-5v"/>
+  <line x1="220" y1="302" x2="300" y2="302" class="wire-5v"/>
+  
+  <!-- GND -->
+  <line x1="300" y1="332" x2="260" y2="332" class="wire-gnd"/>
+  <line x1="260" y1="332" x2="260" y2="355" class="wire-gnd"/>
+  <line x1="250" y1="355" x2="270" y2="355" class="ground-symbol"/>
+  <line x1="253" y1="361" x2="267" y2="361" class="ground-symbol"/>
+  <line x1="256" y1="367" x2="264" y2="367" class="ground-symbol"/>
+  
+  <!-- GPIO6 - CHRG_STAT input -->
+  <line x1="300" y1="362" x2="230" y2="362" class="wire-signal"/>
+  <rect x="140" y="349" width="90" height="26" class="net-label-in" rx="3"/>
+  <text x="185" y="367" class="text-net" text-anchor="middle">CHRG_STAT</text>
+  <line x1="230" y1="362" x2="230" y2="362" class="wire-signal"/>
+  
+  <!-- GPIO7 - CHARGE output -->
+  <line x1="300" y1="392" x2="230" y2="392" class="wire-signal"/>
+  <rect x="155" y="379" width="75" height="26" class="net-label-out" rx="3"/>
+  <text x="192" y="397" class="text-net" text-anchor="middle">CHARGE</text>
+  
+  <!-- ==================== RIGHT SIDE CONNECTIONS ==================== -->
+  
+  <!-- GND -->
+  <line x1="560" y1="302" x2="600" y2="302" class="wire-gnd"/>
+  <line x1="600" y1="302" x2="600" y2="325" class="wire-gnd"/>
+  <line x1="590" y1="325" x2="610" y2="325" class="ground-symbol"/>
+  <line x1="593" y1="331" x2="607" y2="331" class="ground-symbol"/>
+  <line x1="596" y1="337" x2="604" y2="337" class="ground-symbol"/>
+  
+  <!-- GPIO2 - V_SENSE input -->
+  <line x1="560" y1="332" x2="630" y2="332" class="wire-signal"/>
+  <rect x="630" y="319" width="80" height="26" class="net-label-in" rx="3"/>
+  <text x="670" y="337" class="text-net" text-anchor="middle">V_SENSE</text>
+  
+  <!-- GPIO8 - DISCHARGE output -->
+  <line x1="560" y1="362" x2="630" y2="362" class="wire-signal"/>
+  <rect x="630" y="349" width="90" height="26" class="net-label-out" rx="3"/>
+  <text x="675" y="367" class="text-net" text-anchor="middle">DISCHARGE</text>
+  
+  <!-- ==================== NET LIST ==================== -->
+  <rect x="80" y="420" width="300" height="60" fill="#f7fafc" stroke="#cbd5e0" rx="6"/>
+  <text x="95" y="442" class="text-label" font-weight="bold">Net Labels (directly connect to Sheet 2):</text>
+  <text x="95" y="462" class="text-value">+5V, CHRG_STAT, CHARGE, V_SENSE, DISCHARGE</text>
+  
+  <!-- ==================== PIN SUMMARY ==================== -->
+  <rect x="420" y="420" width="300" height="60" fill="#ebf8ff" stroke="#90cdf4" rx="6"/>
+  <text x="435" y="442" class="text-label" font-weight="bold">GPIO Assignments:</text>
+  <text x="435" y="462" class="text-value">GPIO2=ADC | GPIO6=Input | GPIO7,8=Output</text>
+  
+</svg>
